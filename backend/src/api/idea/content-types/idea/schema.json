@@ -1,0 +1,36 @@
+{
+  "kind": "collectionType",
+  "collectionName": "ideas",
+  "info": {
+    "singularName": "idea",
+    "pluralName": "ideas",
+    "displayName": "idea"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "sender": {
+      "type": "string"
+    },
+    "agreement_status": {
+      "type": "integer"
+    },
+    "description": {
+      "type": "string"
+    },
+    "category": {
+      "type": "string"
+    },
+    "send_date": {
+      "type": "date"
+    },
+    "telegram_link": {
+      "type": "string"
+    }
+  }
+}
