@@ -1,16 +1,13 @@
-FROM node:22 AS build
+# 1) build stage
+FROM node:20-alpine AS build
 WORKDIR /app
-
-COPY package*.json ./
-
-# Устанавливаем все зависимости, включая devDependencies
+COPY package.json package-lock.json* yarn.lock* ./
 RUN npm install
-
 COPY . .
-
 RUN npm run build
 
-FROM nginx:stable-alpine
+# 2) run stage (nginx)
+FROM nginx:1.27-alpine
+# Кладем собранную статику
 COPY --from=build /app/dist /usr/share/nginx/html
-EXPOSE 80
-CMD ["nginx", "-g", "daemon off;"]
+# Nginx конфиг прокидываем через docker-compose volume (в compose)

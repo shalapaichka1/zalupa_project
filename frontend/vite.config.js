@@ -16,7 +16,8 @@ export default defineConfig(({ mode }) => {
       hmr: { overlay: true },
       match: {
         usePolling: true
-      }
+      },
+      port: 5173
     },
     plugins: [vue(), vueJsx(), svgLoader()],
     resolve: {
@@ -29,6 +30,9 @@ export default defineConfig(({ mode }) => {
         VITE_API_KEY: JSON.stringify(apiKey),
         VITE_API_URL: JSON.stringify(apiUrl)
       }
+    },
+    build: {
+      outDir: "dist"
     }
   }
 })

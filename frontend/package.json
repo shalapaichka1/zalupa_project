@@ -29,7 +29,8 @@
     "vue": "^3.4.21",
     "vue-router": "^4.5.1",
     "vue3-hot-toast": "^0.0.5",
-    "youtube": "^0.1.0"
+    "youtube": "^0.1.0",
+    "mysql2": "3.9.8"
   },
   "devDependencies": {
     "@rushstack/eslint-patch": "^1.8.0",
