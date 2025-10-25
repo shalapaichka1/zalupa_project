@@ -5,10 +5,14 @@ export const instance = axios.create({
   baseURL: import.meta.env.VITE_BACKEND_URL_API,
 })
 
-instance.interceptors.request.use((config) => {
-    const token = Cookies.get('jwtToken')
-    if (token) {
-        config.headers.Authorization = `Bearer ${token}`;
+instance.interceptors.response.use(
+  (response) => response, // успешные ответы просто возвращаем
+  (error) => {
+    if (error.response && error.response.status === 401) {
+     
+      Cookies.remove("jwtToken");
+
     }
-    return config;
-})
+    return Promise.reject(error);
+  }
+);

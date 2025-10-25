@@ -112,8 +112,8 @@ async function changeUsernameButton(isEditing) {
         <div class="profile-header-username">
             <h1>{{ Cookies.get('username') }}</h1>
             <div class="user-status-medals">
-              <img v-if="useAuthStore().userInfo.isVerified" class="verified" src="../images/verified.png" alt="">
-              <img v-if="useAuthStore().userInfo.isModerator" class="verified" src="../images/moderator.png" alt="">
+              <img v-if="useAuthStore().userInfo.isVerified" class="verified" src="../images/verified.png?url" alt="">
+              <img v-if="useAuthStore().userInfo.isModerator" class="verified" src="../images/moderator.png?url" alt="">
             </div>
         </div>
         <img 

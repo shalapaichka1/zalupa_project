@@ -31,7 +31,7 @@ function openProfile(){
             </div>
 
             <a class="eblo-id" href="https://eblo.id/">
-                <img src="../images/eblo-logo.svg" alt="">
+                <img src="../images/eblo-logo.svg?url" alt="" >
             </a>
         </div>
         
