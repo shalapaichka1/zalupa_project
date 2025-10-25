@@ -49,10 +49,9 @@ function openProfile(){
                 <img class="banana" src="../images/banana.svg" alt="">
                 <router-link to="/moderation" class="moderation-button">Режим модератора</router-link>
             </div>
-
             <div class="header-user-buttons">
                 <button v-if="!useAuthStore().isAuthorized" class="open-sign-in-component-button" @click="openSignInComponent"><img class="header-plus hub" src="../images/Enter.png" alt=""></button>
-                <button v-else class="open-profile-button" @click="openProfile"><img class="header-plus hub" src="../images/user.svg" alt=""></button>
+                <button v-else class="open-profile-button" @click="openProfile"><img class="header-plus hub" src="../images/user.svg?url" alt=""></button>
             </div>
         </div>
     </div>

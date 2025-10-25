@@ -8,8 +8,8 @@ import svgLoader from 'vite-svg-loader'
 export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, process.cwd())
 
-  const apiKey = env.VITE_API_KEY
-  const apiUrl = env.VITE_API_URL
+  const apiKey = env.VITE_BACKEND_REGISTER_API
+  const apiUrl = env.VITE_BACKEND_URL_API
 
   return {
     server: {
@@ -27,8 +27,8 @@ export default defineConfig(({ mode }) => {
     },
     define: {
       'process.env': {
-        VITE_API_KEY: JSON.stringify(apiKey),
-        VITE_API_URL: JSON.stringify(apiUrl)
+        VITE_BACKEND_URL_API: JSON.stringify(apiKey),
+        VITE_BACKEND_URL_API: JSON.stringify(apiUrl)
       }
     },
     build: {
