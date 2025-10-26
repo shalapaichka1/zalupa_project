@@ -92,8 +92,7 @@ async function changeUsernameButton(isEditing) {
       password: useAuthStore().userInfo.password
     })
 
-    const res = await instance.post(`/users${useAuthStore().userInfo.id}`)
-    
+    instance.post(`/users${useAuthStore().userInfo.id}`)
     .then(res => {
       console.log('updates:', res.data);
     })
@@ -112,7 +111,7 @@ async function changeUsernameButton(isEditing) {
         <div class="profile-header-username">
             <h1>{{ Cookies.get('username') }}</h1>
             <div class="user-status-medals">
-              <img v-if="useAuthStore().userInfo.isVerified" class="verified" src="../images/verified.png?url" alt="">
+              <img v-if="useAuthStore().userInfo.isVerified" class="verified" src="../images/verified.png" alt="">
               <img v-if="useAuthStore().userInfo.isModerator" class="verified" src="../images/moderator.png?url" alt="">
             </div>
         </div>

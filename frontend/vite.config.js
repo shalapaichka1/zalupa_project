@@ -27,12 +27,12 @@ export default defineConfig(({ mode }) => {
     },
     define: {
       'process.env': {
-        VITE_BACKEND_URL_API: JSON.stringify(apiKey),
+        VITE_BACKEND_REGISTER_API: JSON.stringify(apiKey),
         VITE_BACKEND_URL_API: JSON.stringify(apiUrl)
       }
     },
     build: {
-      outDir: "dist"
+      outDir: 'dist'
     }
   }
 })

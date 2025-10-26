@@ -103,6 +103,7 @@ async function handleLogin() {
         Cookies.set('username', response.data.user.username)
         Cookies.set('isModeration', response.data.user.isModerator)
         Cookies.set("jwtToken", response.data.jwt)
+        Cookies.set("userId", response.data.user.id)
 
         useAuthStore().userInfo = response.data.user
         useAuthStore().isOpenSignInComponent = false

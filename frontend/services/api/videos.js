@@ -112,7 +112,7 @@ export const addVideoWithAuth = async (link, comment_text) => {
       `https://www.googleapis.com/youtube/v3/videos?part=snippet&id=${link.split('=')[1]}&key=AIzaSyAd_rFuqgRiTnoUv0SzJfgVGdOauNwHYAw`
     );
 
-    const response = await axios.post('http://localhost:1337/api/videos', {
+    const response = await instance.post('/videos', {
       data: {
         url: link,
         url_id: link.split('=')[1],
@@ -151,7 +151,7 @@ export const getJWTToken = async () => {
   try {
     const username = Cookies.get('username');
 
-    const response = await axios.post('http://localhost:1337/api/auth/local', {
+    const response = await instance.post('/auth/local', {
       identifier: useAuthStore().userInfo.username,
       password
     });
@@ -179,7 +179,7 @@ export const addNewUser = async ({username, email, password}) => {
 }
 
 export const changeIsChecked = async (id, status) => {
-  const response = await axios.put(`http://localhost:1337/api/videos/${id}`, {
+  const response = await instance.put(`/videos/${id}`, {
     data: {
       is_checked: !status
     },
@@ -208,7 +208,7 @@ export const getCookie = (name) => {
 }
 
 export const checkVideoExists = async (link) => {
-  const response = await axios.get(`http://localhost:1337/api/videos/`)
+  const response = await instance.get(`/videos/`)
   if (response.data.includes(link)){
     return true
   }

@@ -62,7 +62,6 @@ const login = async (email, password) => {
     if (response.data.success && response.data.data) {
       const { user: userData, token: authToken } = response.data.data
 
-      // Сохраняем данные
       setUser(userData)
       setToken(authToken)
 
@@ -80,7 +79,6 @@ const login = async (email, password) => {
     let errorMessage = 'Ошибка входа'
 
     if (error.response) {
-      // Ошибка от сервера
       const status = error.response.status
 
       switch (status) {
@@ -106,10 +104,8 @@ const login = async (email, password) => {
           errorMessage = error.response.data?.message || `Ошибка ${status}`
       }
     } else if (error.request) {
-      // Нет ответа от сервера
       errorMessage = 'Нет ответа от сервера. Проверьте соединение'
     } else if (error.message) {
-      // Ошибка валидации или другая клиентская ошибка
       errorMessage = error.message
     }
 

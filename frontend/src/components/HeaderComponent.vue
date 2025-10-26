@@ -8,7 +8,7 @@ import Cookies from 'js-cookie'
 import { instance } from '../../services/axios/instance'
 
 onMounted(async () => {
-    const isFav = await instance.get(`/videos?filters[users]?users[username]=${Cookies.get('username')}`)
+    const isFav = await instance.get(`/videos?filters[users]&users[username]=${Cookies.get('username')}`)
     useAuthStore().myFavorites = isFav.data.data;
 
     const res = await instance.get(`/users?filters[username]=${Cookies.get('username')}`)
@@ -45,12 +45,12 @@ function openProfile(){
         </div>
 
         <div class="header-buttons">
-            <div v-if="Cookies.get('isModeration')" class="header-moderation-div">
+            <div v-if="useAuthStore()?.userInfo?.isModerator" class="header-moderation-div">
                 <img class="banana" src="../images/banana.svg" alt="">
                 <router-link to="/moderation" class="moderation-button">Режим модератора</router-link>
             </div>
             <div class="header-user-buttons">
-                <button v-if="!useAuthStore().isAuthorized" class="open-sign-in-component-button" @click="openSignInComponent"><img class="header-plus hub" src="../images/Enter.png" alt=""></button>
+                <button v-if="!useAuthStore()?.isAuthorized" class="open-sign-in-component-button" @click="openSignInComponent"><img class="header-plus hub" src="../images/Enter.png" alt=""></button>
                 <button v-else class="open-profile-button" @click="openProfile"><img class="header-plus hub" src="../images/user.svg?url" alt=""></button>
             </div>
         </div>

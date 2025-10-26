@@ -63,19 +63,20 @@ function isLiked(videoId) {
 async function toggleFavorite(video) {
   try {
     const response = await instance.get(`/videos/${video.documentId}?populate=users`)
-    const currentUsers = response.data.data.users || []
+    const currentUsers = response.data.data.users || [];
+    console.log('AUTH STORE ========= ', useAuthStore())
     
     const isCurrentlyLiked = currentUsers.some(user => user.username === authStore.userInfo.username)
-    
+
     if (isCurrentlyLiked) {
       await instance.put(`/videos/${video.documentId}`, {
         data: {
           users: {
-            disconnect: [authStore.userInfo.id]
+            disconnect: [Cookies.get('userId')]
           }
         }
       })
-      userFavorites.value[video.documentId] = false
+      userFavorites.value[video.documentId] = false;
             const like = await instance.put(`/videos/${video.documentId}`, {
         data: {
           like_count: video.like_count - 1
@@ -86,7 +87,7 @@ async function toggleFavorite(video) {
       await instance.put(`/videos/${video.documentId}`, {
         data: {
           users: {
-            connect: [authStore.userInfo.id]
+            connect: [Cookies.get('userId')]
           }
         }
       })
